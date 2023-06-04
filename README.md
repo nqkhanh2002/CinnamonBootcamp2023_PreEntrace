@@ -1,59 +1,56 @@
+<a name="readme-top"></a>
 <div align="center">
-
-# Vietnamese ID Card Extractor
-
+  <p align="center">
+    <a href="https://www.youtube.com/channel/UCKaMI0RBxF26f6j0Q8RRyTw">View Demo</a>
+    ·
+    <a href="https://github.com/nqkhanh2002/Lane-Detection-for-Self-Driving-Cars/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/nqkhanh2002/Lane Detection-for-Self-Driving-Cars/pulls">Request Feature</a>
+  </p>
 </div>
 
-## Introduction
-Vietnamese ID Card Extractor is an application that utilizes OCR technology to extract information from Vietnamese identification cards. It aims to provide a convenient way to extract data such as name, date of birth, gender, address, and ID number from scanned images or photos of Vietnamese ID cards.
+<h1 align="center">PHÁT HIỆN LÀN ĐƯỜNG ỨNG DỤNG TRONG XE TỰ LÁI</h1>
 
-## Technical Overview
-The application is built using a combination of computer vision and natural language processing techniques. It leverages Optical Character Recognition (OCR) algorithms to recognize and extract text from the input images. The extracted text is then processed and analyzed to identify specific fields relevant to the ID card information.
+![GIF Example](https://user-images.githubusercontent.com/25371934/33930574-61018b38-dfbb-11e7-89bb-66bea1bbb021.gif)
 
-The core technology behind the application involves training machine learning models on a dataset of Vietnamese ID card images to accurately recognize and extract the required information. The models are trained using deep learning frameworks such as TensorFlow or PyTorch.
+Phát hiện làn đường là một nhiệm vụ thị giác máy tính liên quan đến việc xác định ranh giới của các làn đường lái xe trong video hoặc hình ảnh về cảnh đường. Mục tiêu là định vị và theo dõi chính xác vạch kẻ đường trong thời gian thực, ngay cả trong những điều kiện khó khăn như ánh sáng kém, ánh sáng chói hoặc bố cục đường phức tạp.
 
-The application provides a user-friendly interface, allowing users to upload images of Vietnamese ID cards and retrieve the extracted information in a structured format. It supports various image formats, including JPEG and PNG.
-
-## How to Install
-To install and run the Vietnamese ID Card Extractor, follow the steps below:
-
-1. Clone the repository:
-```
-git clone https://github.com/yourusername/vietnamese-id-card-extractor.git
-```
-2. Navigate to the project directory: 
-```
-cd vietnamese-id-card-extractor
-```
-4. Install the required dependencies:
+Kho lưu trữ này phát triển một giải pháp phát hiện và theo dõi làn đường cho xe tự lái. Đây là một phần quan trọng của hệ thống lái tự động, nhằm đảm bảo an toàn và hiệu quả cho người lái và hành khách trên đường.
+# Thành viên nhóm 
+| STT | Họ và tên | MSSV |
+|-------|-------|-------|
+| 1 | Nguyễn Quốc Khánh | 20521452 |
+| 2 | Đinh Phương Nam | 20520641 |
+# Cấu trúc dự án
+# Phương pháp
+Bài toán triển khai gồm 3 phần: 
+1. Phương pháp xử lý ảnh truyền thống
+2. Phương pháp mạng nơ-ron học sâu
+3. Xây dựng giao diện người dùng (GUI) để sử dụng và so sánh 2 phương pháp 
+------- 
+## Phương pháp xử lý ảnh truyền thống
+1. Tính toán ma trận hiệu chỉnh camera (camera calibration matrix) và hệ số méo hình ảnh (distortion coefficients).
+2. Áp dụng sự hiệu chỉnh méo cho ảnh gốc.
+3. Sử dụng các chuyển đổi màu sắc, độ dốc, vv, để tạo ra một hình ảnh nhị phân được ngưỡng.
+4. Áp dụng phép chuyển đổi góc nhìn để tạo ra một "góc nhìn chim" của hình ảnh.
+5. Phát hiện các pixel của làn đường và phù hợp để tìm ranh giới của làn đường.
+6. Xác định độ cong của làn đường và vị trí xe so với trung tâm.
+7. Chuyển đổi lại ranh giới của làn đường được phát hiện trở lại hình ảnh ban đầu và hiển thị ước tính số liệu của độ cong của làn đường và vị trí xe.
+## Phương pháp học sâu 
+1. Mô hình SCNN-Tensorflow
+## Xây dựng giao diện người dùng (GUI)
+## Cách chạy chương trình
+1. Cài đặt các thư viện cần thiết bằng lệnh sau:
 ```
 pip install -r requirements.txt
 ```
-6. Run the application:
+2. Chạy chương trình bằng lệnh trong file command_pipline.txt
+- main.py [--video] INPUT_PATH OUTPUT_PATH 
+
+Trong đó tham số INPUT_PATH là đường dẫn đến video hoặc ảnh đầu vào, OUTPUT_PATH là đường dẫn đến video hoặc ảnh đầu ra, [--video] là tham số để chương trình biết INPUT_PATH là video hay ảnh.
+- Ví dụ:
 ```
-python main.py
+python Image_Processing/main.py --video Test_Video/video_test_01.mp4 Results/output_test_01.mp4
 ```
-
-## Usage
-Once the application is running, you can access it through a web interface by opening your browser and navigating to `http://localhost:5000`.
-
-1. Click on the "Upload" button to select an image of a Vietnamese ID card.
-
-2. Wait for the application to process the image and extract the information.
-
-3. The extracted information, including the name, date of birth, gender, address, and ID number, will be displayed on the screen.
-
-4. You can repeat the process with other ID card images as needed.
-
-## Demo Video
-Please refer to the [demo video](link-to-demo-video) for a visual demonstration of the installation process and usage of the Vietnamese ID Card Extractor.
-
-## Contributions
-Contributions to the Vietnamese ID Card Extractor project are welcome. However, please note that this is an individual work assignment, and collaboration or team contributions are not allowed.
-
-## License
-The Vietnamese ID Card Extractor is released under the [MIT License](link-to-license-file). Please see the `LICENSE` file for more details.
-
-## Contact
-This project is part of Round 2: Pre-entrance Test - Cinnamon AI Bootcamp 2023 - Full-stack AI: The next-gen AI expertise. Please refrain from copying in any way. or if you have any questions or suggestions regarding the Vietnamese ID Card Extractor, please contact nqkdeveloper@gmail.com
-
+3. Báo cáo kỹ thuật trong file Report.pdf
+4. [Link colab cho triển khai nhanh source code](https://colab.research.google.com/drive/1ymFbIRuQhlgN0u20zoaH9lyR3gm5emF0?usp=sharing)
