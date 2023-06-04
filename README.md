@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 <div align="center">
   <p align="center">
-    <a href="[https://www.youtube.com/watch?v=j-Rbf1Wvl6M&t=4s](https://www.youtube.com/watch?v=4aPsZ5zp0sk)">View Demo</a>
+    <a href="https://www.youtube.com/watch?v=4aPsZ5zp0sk">View Demo</a>
     ·
     <a href="https://github.com/nqkhanh2002/CinnamonBootcamp2023_PreEntrace/issues">Report Bug</a>
     ·
@@ -12,7 +12,7 @@
 <h1 align="center">LANE DETECTION APPLICATION IN SELF-DRIVING CAR</h1>
 
 <div align="center">
-  <img src="Image_Resrouces\intro.gif" alt="Result Example" width="800px">
+  <img src="Image_Resrouces/intro.gif" alt="Result Example" width="800px">
 </div>
 
 **Lane detection** is a computer vision task that involves identifying the boundaries of driving lanes in video or image scenes. The goal is to accurately locate and track the lane markings in real-time, even in challenging conditions such as low light, glare, or complex road layouts.
