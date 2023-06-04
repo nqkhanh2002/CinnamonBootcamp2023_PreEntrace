@@ -12,7 +12,7 @@
 <h1 align="center">LANE DETECTION APPLICATION IN SELF-DRIVING CAR</h1>
 
 <div align="center">
-  <img src="intro.gif" alt="Result Example" width="800px">
+  <img src="Image_Resrouces\intro.gif" alt="Result Example" width="800px">
 </div>
 
 **Lane detection** is a computer vision task that involves identifying the boundaries of driving lanes in video or image scenes. The goal is to accurately locate and track the lane markings in real-time, even in challenging conditions such as low light, glare, or complex road layouts.
@@ -39,24 +39,25 @@ The implementation problem consists of 3 parts:
 * LKAS: Lane Keeping Assist System with Vietnamese traffic signs
 * LDWS: Lane Departure Warning System ((Not aiming to develop in this method but develop in Deep Learning method)
 * Vehicle position from center
+* And finally Frame ID and FPS are displayed in the upper right corner for testing
 ## Deep Learning Method
 > **This method is still in development because I train the model on ONNX and TensorRT so I'm stuck with NVIDIA GPUs and I don't have time to solve this Pre-Entrance test.**
-1. Lane Detector: Ultra Fast Lane Detection ([V1](https://github.com/cfzd/Ultra-Fast-Lane-Detection) & [V2](https://github.com/cfzd/Ultra-Fast-Lane-Detection-v2)) on backbone ResNet (18 & 34)
-2. Vehicle Detector: [YOLOv8 (v8m & v8l)](https://github.com/ultralytics/ultralytics) [ONNX](https://github.com/ibaiGorordo/ONNX-YOLOv8-Object-Detection) 
+1. **Lane Detector**: Ultra Fast Lane Detection ([V1](https://github.com/cfzd/Ultra-Fast-Lane-Detection) & [V2](https://github.com/cfzd/Ultra-Fast-Lane-Detection-v2)) on backbone ResNet (18 & 34)
+2. **Vehicle Detector**: [YOLOv8 (v8m & v8l)](https://github.com/ultralytics/ultralytics) [ONNX](https://github.com/ibaiGorordo/ONNX-YOLOv8-Object-Detection) 
 ## Build a user interface (GUI) to deliver a quick demo application
-
-## Cách chạy chương trình
-1. Cài đặt các thư viện cần thiết bằng lệnh sau:
+![GUI](Image_Resrouces/GUI.png)
+## Usage
+1. Git clone this repository:
+```
+git clone https://github.com/nqkhanh2002/CinnamonBootcamp2023_PreEntrace.git
+```
+2. Install the required libraries with the following command:
 ```
 pip install -r requirements.txt
 ```
-2. Chạy chương trình bằng lệnh trong file command_pipline.txt
-- main.py [--video] INPUT_PATH OUTPUT_PATH 
-
-Trong đó tham số INPUT_PATH là đường dẫn đến video hoặc ảnh đầu vào, OUTPUT_PATH là đường dẫn đến video hoặc ảnh đầu ra, [--video] là tham số để chương trình biết INPUT_PATH là video hay ảnh.
-- Ví dụ:
-```
-python Image_Processing/main.py --video Test_Video/video_test_01.mp4 Results/output_test_01.mp4
-```
-3. Báo cáo kỹ thuật trong file Report.pdf
-4. [Link colab cho triển khai nhanh source code](https://colab.research.google.com/drive/1ymFbIRuQhlgN0u20zoaH9lyR3gm5emF0?usp=sharing)
+3. Launch Flask interface
+ ```
+ python program.py
+ ```
+4. Go to the development server at [127.0.0.1:8080](http://127.0.0.1:8080) in a web browser. Use **Ctrl + C** to exit the program.
+5. You can access quick deployment on Vercel [here](). Demo process is available [here]().
