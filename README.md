@@ -9,9 +9,12 @@
   </p>
 </div>
 
-<h1 align="center">LANE DETECTOIN APPLICATION IN SELF-DRIVING CAR</h1>
+<h1 align="center">LANE DETECTION APPLICATION IN SELF-DRIVING CAR</h1>
 
-![Result Example](https://user-images.githubusercontent.com/25371934/33930574-61018b38-dfbb-11e7-89bb-66bea1bbb021.gif)
+<div align="center">
+  <img src="intro.gif" alt="Result Example" width="800px">
+</div>
+
 
 Phát hiện làn đường là một nhiệm vụ thị giác máy tính liên quan đến việc xác định ranh giới của các làn đường lái xe trong video hoặc hình ảnh về cảnh đường. Mục tiêu là định vị và theo dõi chính xác vạch kẻ đường trong thời gian thực, ngay cả trong những điều kiện khó khăn như ánh sáng kém, ánh sáng chói hoặc bố cục đường phức tạp.
 
