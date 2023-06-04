@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 <div align="center">
   <p align="center">
-    <a href="https://www.youtube.com/channel/UCKaMI0RBxF26f6j0Q8RRyTw">View Demo</a>
+    <a href="https://www.youtube.com/watch?v=j-Rbf1Wvl6M&t=4s">View Demo</a>
     ·
     <a href="https://github.com/nqkhanh2002/CinnamonBootcamp2023_PreEntrace/issues">Report Bug</a>
     ·
@@ -60,4 +60,4 @@ pip install -r requirements.txt
  python program.py
  ```
 4. Go to the development server at [127.0.0.1:8080](http://127.0.0.1:8080) in a web browser. Use **Ctrl + C** to exit the program.
-5. You can access quick deployment on Vercel [here](). Demo process is available [here]().
+5. You can access quick deployment on Vercel [here](). Demo process is available [here](https://www.youtube.com/watch?v=j-Rbf1Wvl6M&t=4s).
