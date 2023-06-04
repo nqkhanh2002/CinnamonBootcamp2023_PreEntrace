@@ -29,17 +29,39 @@ The implementation problem consists of 3 parts:
 3. Build a user interface (GUI) to deliver a quick demo application
 ------- 
 ## Traditional image processing Method
-1. Compute the camera calibration matrix and distortion coefficients.
-2. Apply a distortion correction to raw images.
-3. Apply a perspective transform to generate a “bird’s-eye view” of the image.
-4. Use color transforms, gradients, etc., to create a thresholded binary image.
-5. Detect lane pixels and fit to find the lane boundary.
-6. Determine the curvature of the lane and vehicle position with respect to center.
-7. Warp the detected lane boundaries back onto the original image and display information for ADAS System. Information displayed includes:
-* LKAS: Lane Keeping Assist System with Vietnamese traffic signs
-* LDWS: Lane Departure Warning System ((Not aiming to develop in this method but develop in Deep Learning method)
-* Vehicle position from center
-* And finally Frame ID and FPS are displayed in the upper right corner for testing
+**1. Compute the camera calibration matrix and distortion coefficients.**
+
+> This step involves calibrating the camera used for capturing images or videos. By taking multiple calibration images of a chessboard pattern from different angles, the camera calibration matrix and distortion coefficients can be computed. These parameters are essential for correcting the distortion in the subsequent image processing steps.
+> 
+**2. Apply a distortion correction to raw images.**
+
+> Using the camera calibration matrix and distortion coefficients obtained in the previous step, the raw images captured by the camera can be undistorted. This correction ensures that straight lines appear straight in the image, reducing any distortion caused by the camera lens.
+
+**3. Apply a perspective transform to generate a “bird’s-eye view” of the image.**
+
+> Perspective transformation is applied to convert the undistorted image from a regular view to a top-down view, resembling a bird's-eye view. This transformation helps to focus on the lane region of interest and simplifies the subsequent lane detection process.
+
+**4. Use color transforms (HSL) to create a thresholded binary image.**
+
+> Different color spaces, gradient-based edge detection, and other image processing techniques are used to create a binary image where the lane markings are highlighted. Thresholding techniques are applied to identify the pixels that likely belong to the lanes based on their color or gradient properties.
+
+**5. Detect lane pixels and fit to find the lane boundary.**
+
+> Lane pixels are detected by applying a pixel-wise search or sliding window search on the thresholded binary image. The detected pixels are then used to fit a mathematical model (e.g., polynomial) that represents the lane boundary. This step determines the shape and position of the detected lanes.
+
+**6. Determine the curvature of the lane and vehicle position with respect to center.**
+
+> Using the fitted lane boundary, the curvature of the lane can be calculated. This provides valuable information about the curvature radius, which is essential for controlling the vehicle during self-driving. Additionally, the vehicle's position with respect to the lane center can be determined, allowing for appropriate adjustments in driving behavior.
+
+**7. Warp the detected lane boundaries back onto the original image and display information for ADAS System. Information displayed includes:**
+* **LKAS: Lane Keeping Assist System with Vietnamese traffic signs**
+* **LDWS: Lane Departure Warning System ((Not aiming to develop in this method but develop in Deep Learning method)**
+* **Vehicle position from center**
+* **And finally Frame ID and FPS are displayed in the upper right corner for testing**
+
+
+> The detected lane boundaries, along with the calculated curvature and vehicle position, are mapped back onto the original undistorted image. This step visualizes the detected lanes and provides important information for an Advanced Driver Assistance System (ADAS). The displayed information may include LKAS (Lane Keeping Assist System) with Vietnamese traffic signs, LDWS (Lane Departure Warning System), the vehicle's position from the center, and other relevant details. Additionally, for testing purposes, the Frame ID and Frames Per Second (FPS) can be displayed in the upper right corner of the image.
+
 ## Deep Learning Method
 > **This method is still in development because I train the model on ONNX and TensorRT so I'm stuck with NVIDIA GPUs and I don't have time to solve this Pre-Entrance test.**
 1. **Lane Detector**: Ultra Fast Lane Detection ([V1](https://github.com/cfzd/Ultra-Fast-Lane-Detection) & [V2](https://github.com/cfzd/Ultra-Fast-Lane-Detection-v2)) on backbone ResNet (18 & 34)
@@ -61,3 +83,6 @@ pip install -r requirements.txt
  ```
 4. Go to the development server at [127.0.0.1:5000](http://127.0.0.1:5000/) in a web browser. Use **Ctrl + C** to exit the program.
 5. Demo process is available [here](https://www.youtube.com/watch?v=j-Rbf1Wvl6M&t=4s). Some test data (image and video) can be accessed [here](https://drive.google.com/drive/folders/1BtCvko4PB6_j2ljuAsCYnpVnhCQomFjg?usp=sharing).
+
+## Final Result
+[![Demo video]()](static/Results/Video/output_video_test_01.mp4_869767.mp4)
