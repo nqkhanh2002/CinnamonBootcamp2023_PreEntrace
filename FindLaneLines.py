@@ -41,13 +41,7 @@ def extract_label_from_calib(calib_path):
 
 
 class FindLaneLines:
-    """ This class is for parameter tunning.
-
-    Attributes:
-        ...
-    """
     def __init__(self):
-        """ Init Application"""
         self.calibration = CameraCalibration('Camera_Calibration_Chessboard', 9, 6)
         self.thresholding = Thresholding()
         self.transform = PerspectiveTransformation()
@@ -211,24 +205,4 @@ class FindLaneLines:
         precision = precision_score(true_labels, predicted_labels)
         recall = recall_score(true_labels, predicted_labels)
         f1 = f1_score(true_labels, predicted_labels)
-
-        # lane_detection_rate = lane_detected / len(predicted_labels)
-
-        # return precision, recall, f1, lane_detection_rate
         return precision, recall, f1
-
-        
-
-# def main():
-#     args = docopt(__doc__)
-#     input = args['INPUT_PATH']
-#     output = args['OUTPUT_PATH']
-
-#     findLaneLines = FindLaneLines()
-#     if args['--video']:
-#         findLaneLines.process_video(input, output)
-#     else:
-#         findLaneLines.process_image(input, output)
-
-# if __name__ == "__main__":
-#     main()

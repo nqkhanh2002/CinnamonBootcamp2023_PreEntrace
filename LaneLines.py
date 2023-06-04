@@ -7,22 +7,9 @@ def hist(img):
     return np.sum(bottom_half, axis=0)
 
 class LaneLines:
-    """ Class containing information about detected lane lines.
 
-    Attributes:
-        left_fit (np.array): Coefficients of a polynomial that fit left lane line
-        right_fit (np.array): Coefficients of a polynomial that fit right lane line
-        parameters (dict): Dictionary containing all parameters needed for the pipeline
-        debug (boolean): Flag for debug/normal mode
-    """
     def __init__(self):
-        """Init Lanelines.
 
-        Parameters:
-            left_fit (np.array): Coefficients of polynomial that fit left lane
-            right_fit (np.array): Coefficients of polynomial that fit right lane
-            binary (np.array): binary image
-        """
         self.left_fit = None
         self.right_fit = None
         self.binary = None
@@ -34,10 +21,7 @@ class LaneLines:
         self.left_curve_img = mpimg.imread(r'Image_Resrouces\retrai.png')
         self.right_curve_img = mpimg.imread(r'Image_Resrouces\rephai.png')
         self.keep_straight_img = mpimg.imread(r'Image_Resrouces\dithang.png')
-        # For google colab
-        # self.left_curve_img = mpimg.imread('/content/Lane-Detection-for-Self-Driving-Cars/Image_Resrouces/retrai.png')
-        # self.right_curve_img = mpimg.imread('/content/Lane-Detection-for-Self-Driving-Cars/Image_Resrouces/rephai.png')
-        # self.keep_straight_img = mpimg.imread('/content/Lane-Detection-for-Self-Driving-Cars/Image_Resrouces/dithang.png')
+        
         self.left_curve_img = cv2.normalize(src=self.left_curve_img, dst=None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
         self.right_curve_img = cv2.normalize(src=self.right_curve_img, dst=None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
         self.keep_straight_img = cv2.normalize(src=self.keep_straight_img, dst=None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
@@ -51,29 +35,12 @@ class LaneLines:
         self.minpix = 50
 
     def forward(self, img):
-        """Take a image and detect lane lines.
 
-        Parameters:
-            img (np.array): An binary image containing relevant pixels
-
-        Returns:
-            Image (np.array): An RGB image containing lane lines pixels and other details
-        """
         self.extract_features(img)
         return self.fit_poly(img)
 
     def pixels_in_window(self, center, margin, height):
-        """ Return all pixel that in a specific window
-
-        Parameters:
-            center (tuple): coordinate of the center of the window
-            margin (int): half width of the window
-            height (int): height of the window
-
-        Returns:
-            pixelx (np.array): x coordinates of pixels that lie inside the window
-            pixely (np.array): y coordinates of pixels that lie inside the window
-        """
+       
         topleft = (center[0]-margin, center[1]-height//2)
         bottomright = (center[0]+margin, center[1]+height//2)
 
@@ -82,11 +49,7 @@ class LaneLines:
         return self.nonzerox[condx&condy], self.nonzeroy[condx&condy]
 
     def extract_features(self, img):
-        """ Extract features from a binary image
-
-        Parameters:
-            img (np.array): A binary image
-        """
+       
         self.img = img
         # Height of of windows - based on nwindows and image shape
         self.window_height = np.int(img.shape[0]//self.nwindows)
@@ -97,18 +60,6 @@ class LaneLines:
         self.nonzeroy = np.array(self.nonzero[0])
 
     def find_lane_pixels(self, img):
-        """Find lane pixels from a binary warped image.
-
-        Parameters:
-            img (np.array): A binary warped image
-
-        Returns:
-            leftx (np.array): x coordinates of left lane pixels
-            lefty (np.array): y coordinates of left lane pixels
-            rightx (np.array): x coordinates of right lane pixels
-            righty (np.array): y coordinates of right lane pixels
-            out_img (np.array): A RGB image that use to display result later on.
-        """
         assert(len(img.shape) == 2)
 
         # Create an output image to draw on and visualize the result
@@ -150,14 +101,6 @@ class LaneLines:
         return leftx, lefty, rightx, righty, out_img
 
     def fit_poly(self, img):
-        """Find the lane line from an image and draw it.
-
-        Parameters:
-            img (np.array): a binary warped image
-
-        Returns:
-            out_img (np.array): a RGB image that have lane line drawn on that.
-        """
 
         leftx, lefty, rightx, righty, out_img = self.find_lane_pixels(img)
 
