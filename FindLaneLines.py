@@ -1,14 +1,3 @@
-"""
-Lane Lines Detection pipeline
-
-Usage:
-    main.py [--video] INPUT_PATH OUTPUT_PATH 
-
-Options:
-
--h --help                               show this screen
---video                                 process video file instead of image
-"""
 import time
 import os
 import cv2
@@ -141,37 +130,7 @@ class FindLaneLines:
         # Áp dụng hàm xử lý khung hình lên video
         out_clip = clip.fl_image(process_frame)
         out_clip.write_videofile(output_path, audio=False)
-        # Hiển thị video sau khi xử lý
-        # cap = cv2.VideoCapture(output_path)
-        # paused = False
-        # forward = False
-        # playback_speed = 1.0
-        # fps = cap.get(cv2.CAP_PROP_FPS)
-        # delay = int(1000 / (playback_speed * fps))  # Tính toán thời gian chờ dựa trên tốc độ phát lại
-
-        # while True:
-        #     if not paused or forward:
-        #         ret, frame = cap.read()
-        #         if not ret:
-        #             break
-        #         cv2.imshow('Result Video', frame)
-        #         key = cv2.waitKey(delay)
-
-        #         if key == ord('q'):  # Phím 'q' để thoát khỏi vòng lặp
-        #             break
-        #         elif key == ord('p'):  # Phím 'p' để tạm dừng hoặc tiếp tục video
-        #             paused = not paused
-        #         elif key == ord('r'):  # Phím 'r' để quay lại đầu video
-        #             cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
-        #             paused = False
-        #         elif key == ord('f'):  # Phím 'f' để tua nhanh video
-        #             forward = True
-        #         else:
-        #             forward = False
-        # cap.release()
-        # cv2.destroyAllWindows()
-     
-    
+  
 
     def evaluate(self, dataset_path):
         true_labels = []
