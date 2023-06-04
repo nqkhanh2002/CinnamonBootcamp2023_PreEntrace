@@ -28,7 +28,7 @@ The implementation problem consists of 3 parts:
 2. Deep Learning Method
 3. Build a user interface (GUI) to deliver a quick demo application
 ------- 
-## Traditional image processing method
+## Traditional image processing Method
 1. Compute the camera calibration matrix and distortion coefficients.
 2. Apply a distortion correction to raw images.
 3. Apply a perspective transform to generate a “bird’s-eye view” of the image.
