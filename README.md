@@ -15,33 +15,36 @@
   <img src="intro.gif" alt="Result Example" width="800px">
 </div>
 
+**Lane detection** is a computer vision task that involves identifying the boundaries of driving lanes in video or image scenes. The goal is to accurately locate and track the lane markings in real-time, even in challenging conditions such as low light, glare, or complex road layouts.
 
-Phát hiện làn đường là một nhiệm vụ thị giác máy tính liên quan đến việc xác định ranh giới của các làn đường lái xe trong video hoặc hình ảnh về cảnh đường. Mục tiêu là định vị và theo dõi chính xác vạch kẻ đường trong thời gian thực, ngay cả trong những điều kiện khó khăn như ánh sáng kém, ánh sáng chói hoặc bố cục đường phức tạp.
+This repository develops a lane detection and tracking solution for self-driving cars. It is a crucial component of an autonomous driving system, ensuring safety and efficiency for the driver and passengers on the road.
 
-Kho lưu trữ này phát triển một giải pháp phát hiện và theo dõi làn đường cho xe tự lái. Đây là một phần quan trọng của hệ thống lái tự động, nhằm đảm bảo an toàn và hiệu quả cho người lái và hành khách trên đường.
-# Thành viên nhóm 
-| STT | Họ và tên | MSSV |
-|-------|-------|-------|
-| 1 | Nguyễn Quốc Khánh | 20521452 |
-| 2 | Đinh Phương Nam | 20520641 |
-# Cấu trúc dự án
-# Phương pháp
-Bài toán triển khai gồm 3 phần: 
-1. Phương pháp xử lý ảnh truyền thống
-2. Phương pháp mạng nơ-ron học sâu
-3. Xây dựng giao diện người dùng (GUI) để sử dụng và so sánh 2 phương pháp 
+# Project Structure
+> **This is an English version and an improved repository based on [the original repository](https://github.com/nqkhanh2002/Lane-Detection-for-Self-Driving-Cars), which represents the previous research results and my independent work.**
+
+# Pipline
+The implementation problem consists of 3 parts:
+1. Traditional image processing method
+2. Deep Learning Method
+3. Build a user interface (GUI) to deliver a quick demo application
 ------- 
-## Phương pháp xử lý ảnh truyền thống
-1. Tính toán ma trận hiệu chỉnh camera (camera calibration matrix) và hệ số méo hình ảnh (distortion coefficients).
-2. Áp dụng sự hiệu chỉnh méo cho ảnh gốc.
-3. Sử dụng các chuyển đổi màu sắc, độ dốc, vv, để tạo ra một hình ảnh nhị phân được ngưỡng.
-4. Áp dụng phép chuyển đổi góc nhìn để tạo ra một "góc nhìn chim" của hình ảnh.
-5. Phát hiện các pixel của làn đường và phù hợp để tìm ranh giới của làn đường.
-6. Xác định độ cong của làn đường và vị trí xe so với trung tâm.
-7. Chuyển đổi lại ranh giới của làn đường được phát hiện trở lại hình ảnh ban đầu và hiển thị ước tính số liệu của độ cong của làn đường và vị trí xe.
-## Phương pháp học sâu 
-1. Mô hình SCNN-Tensorflow
-## Xây dựng giao diện người dùng (GUI)
+## Traditional image processing method
+1. Compute the camera calibration matrix and distortion coefficients.
+2. Apply a distortion correction to raw images.
+3. Apply a perspective transform to generate a “bird’s-eye view” of the image.
+4. Use color transforms, gradients, etc., to create a thresholded binary image.
+5. Detect lane pixels and fit to find the lane boundary.
+6. Determine the curvature of the lane and vehicle position with respect to center.
+7. Warp the detected lane boundaries back onto the original image and display information for ADAS System. Information displayed includes:
+* LKAS: Lane Keeping Assist System with Vietnamese traffic signs
+* LDWS: Lane Departure Warning System ((Not aiming to develop in this method but develop in Deep Learning method)
+* Vehicle position from center
+## Deep Learning Method
+> **This method is still in development because I train the model on ONNX and TensorRT so I'm stuck with NVIDIA GPUs and I don't have time to solve this Pre-Entrance test.**
+1. Lane Detector: Ultra Fast Lane Detection ([V1](https://github.com/cfzd/Ultra-Fast-Lane-Detection) & [V2](https://github.com/cfzd/Ultra-Fast-Lane-Detection-v2)) on backbone ResNet (18 & 34)
+2. Vehicle Detector: [YOLOv8 (v8m & v8l)](https://github.com/ultralytics/ultralytics) [ONNX](https://github.com/ibaiGorordo/ONNX-YOLOv8-Object-Detection) 
+## Build a user interface (GUI) to deliver a quick demo application
+
 ## Cách chạy chương trình
 1. Cài đặt các thư viện cần thiết bằng lệnh sau:
 ```
